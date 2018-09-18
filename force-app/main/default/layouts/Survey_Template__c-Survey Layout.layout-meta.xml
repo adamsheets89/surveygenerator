@@ -11,12 +11,12 @@
                 <field>Name</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Question_One__c</field>
+                <behavior>Required</behavior>
+                <field>Number_of_Questions__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Question_Two__c</field>
+                <behavior>Required</behavior>
+                <field>Answers_Per_Question__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -73,6 +73,10 @@
         <fields>CORE.USERS.FULL_NAME</fields>
         <fields>TASK.LAST_UPDATE</fields>
         <relatedList>RelatedHistoryList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>Survey__c.Survey_Template__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>

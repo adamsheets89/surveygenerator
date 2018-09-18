@@ -5,16 +5,17 @@
     <aura:attribute name="q2" type="String"/>
     <aura:attribute name="q3" type="String"/>
     <aura:attribute name="q4" type="String"/>
+    <aura:attribute name="q5" type="String"/>
 
     <aura:handler name="init" value="{!this}" action="{!c.init}"/>
-
+    <c:createSurveyButton/>
     <div class="slds-box slds-theme_default">
         <lightning:input label="Name" value="{!v.name}"/>
     </div>
     <div class="slds-box slds-theme_default">
         <lightning:input label="Question One" value="{!v.q1}"/>
     </div>
-    
+
     <div class="slds-box slds-theme_default">
         <lightning:input label="Question Two" value="{!v.q2}"/>
     </div>
@@ -23,6 +24,9 @@
     </div>
     <div class="slds-box slds-theme_default">
         <lightning:input label="Question Four" value="{!v.q4}"/>
+    </div>
+    <div class="slds-box slds-theme_default">
+        <lightning:input label="Question Four" value="{!v.q5}"/>
     </div>
     <div class="slds-container slds-container_fluid slds-text-align_right  slds-p-top_medium">
         <lightning:button label="Create Survey" value="Create Survey" variant="neutral" onclick="{!c.clickCreate}"/>

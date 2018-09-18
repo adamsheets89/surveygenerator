@@ -30,12 +30,16 @@
     <layoutAssignments>
         <layout>Survey__c-Survey Layout</layout>
     </layoutAssignments>
+    <pageAccesses>
+        <apexPage>surveyTemplate</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
     <tabVisibilities>
         <tab>Survey_Template__c</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>surveyTemplate</tab>
+        <tab>Survey__c</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <userLicense>Salesforce</userLicense>

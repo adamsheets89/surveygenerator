@@ -10,6 +10,7 @@
     <label>Survey Generator</label>
     <navType>Standard</navType>
     <tabs>Survey_Template__c</tabs>
+    <tabs>surveyTemplate</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>Survey_Generator_UtilityBar</utilityBar>
 </CustomApplication>

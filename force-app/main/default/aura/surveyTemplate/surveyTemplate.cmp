@@ -1,4 +1,4 @@
-<aura:component controller="surveyTemplate">
+<aura:component controller="surveyTemplate" implements="flexipage:availableForRecordHome">
     <aura:attribute name="data" type="Object" description="Survey_Template__c"/>
     <aura:attribute name="name" type="String"/>
     <aura:attribute name="q1" type="String"/>

@@ -1,8 +1,8 @@
-<aura:component implements="flexipage:availableForRecordHome, force:hasRecordId" controller="surveyTemplate">
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" controller="surveyTemplate">
 
     <lightning:button label="Create Survey"
                       title="Create Survey"
                       variant="neutral"
                       onclick="{!c.clickCreateSurvey}"/>
 
-</aura:component>	
+</aura:component>

@@ -7,7 +7,7 @@
     <referenceTo>Survey__c</referenceTo>
     <relationshipLabel>Answers</relationshipLabel>
     <relationshipName>Answers</relationshipName>
-    <required>true</required>
+    <required>false</required>
     <trackTrending>false</trackTrending>
     <type>Lookup</type>
 </CustomField>

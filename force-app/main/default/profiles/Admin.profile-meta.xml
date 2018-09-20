@@ -18,11 +18,34 @@
         <enabled>true</enabled>
     </classAccesses>
     <custom>false</custom>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Answer__c.Question_Name__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Answer__c.Question__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Answer__c.Survey__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Question__c.Survey__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <layoutAssignments>
         <layout>Answer__c-Answer Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Question__c-Question Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Survey_Response__c-Survey Response Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Survey_Template__c-Survey Layout</layout>
@@ -54,6 +77,15 @@
         <allowEdit>true</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>true</modifyAllRecords>
+        <object>Survey_Response__c</object>
+        <viewAllRecords>true</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>true</modifyAllRecords>
         <object>Survey_Template__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
@@ -70,10 +102,6 @@
         <apexPage>surveyTemplate</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
-    <tabVisibilities>
-        <tab>Survey_Template__c</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
     <tabVisibilities>
         <tab>Survey__c</tab>
         <visibility>DefaultOn</visibility>

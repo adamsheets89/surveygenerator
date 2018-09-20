@@ -23,30 +23,50 @@ public with sharing class surveyTemplate {
                     Name = (String)objectMap.get('question'),
                     Survey__c = recordId);
                 
-                Answer__c a1 = new Answer__c(
-                    Name = (String)answersMap.get('answerOne'),
-                    Survey__c = recordId);
-
-                Answer__c a2 = new Answer__c(
-                    Name = (String)answersMap.get('answerTwo'),
-                    Survey__c = recordId);
-
-                Answer__c a3 = new Answer__c(
-                    Name = (String)answersMap.get('answerThree'),
-                    Survey__c = recordId);
-
-                Answer__c a4 = new Answer__c(
-                    Name = (String)answersMap.get('answerFour'),
-                    Survey__c = recordId);
-                
                 questions.add(q);
-                answers.add(a1);
-                answers.add(a2);
-                answers.add(a3);
-                answers.add(a4);
             }
             insert questions;
+
+            List<Question__c> questionsList = [SELECT Id, Name
+                                               FROM Question__c
+                                               WHERE Survey__c =:recordId];
+            
+            for (Object o : objects) {
+                for (Question__c q : questionsList) {
+                    Map<String,Object> objectMap = (Map<String,Object>)o;
+                    Map<String,Object> answersMap = (Map<String,Object>)objectMap.get('answers');
+
+                    if((String)objectMap.get('question') == q.Name){
+                        Answer__c a1 = new Answer__c(
+                            Name = (String)answersMap.get('answerOne'),
+                            Survey__c = recordId,
+                            Question__c = q.Id);
+
+                        Answer__c a2 = new Answer__c(
+                            Name = (String)answersMap.get('answerTwo'),
+                            Survey__c = recordId,
+                            Question__c = q.Id);
+
+                        Answer__c a3 = new Answer__c(
+                            Name = (String)answersMap.get('answerThree'),
+                            Survey__c = recordId,
+                            Question__c = q.Id);
+
+                        Answer__c a4 = new Answer__c(
+                            Name = (String)answersMap.get('answerFour'),
+                            Survey__c = recordId,
+                            Question__c = q.Id);
+                        
+                        answers.add(a1);
+                        answers.add(a2);
+                        answers.add(a3);
+                        answers.add(a4);
+                    }
+                }
+            }
             insert answers;
+
+
           
       } catch (Exception e) {
           rd.addError(e.getMessage());

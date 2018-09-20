@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SecuritySettings xmlns="http://soap.sforce.com/2006/04/metadata">
-    <networkAccess/>
+    <networkAccess>
+        <ipRanges>
+            <end>67.167.1.91</end>
+            <start>67.167.1.91</start>
+        </ipRanges>
+    </networkAccess>
     <passwordPolicies>
         <complexity>AlphaNumeric</complexity>
         <expiration>NinetyDays</expiration>

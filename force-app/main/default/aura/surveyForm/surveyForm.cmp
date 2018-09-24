@@ -7,7 +7,7 @@
     <aura:iteration items="{!v.surveyInfo}" var="survey">
         <lightning:input value="{!survey.Name}" readonly="true"/>
         <aura:iteration items="{!survey.Answers__r.records}" var="answers">
-            <ui:inputCheckbox label="{!answers.Name}"/>
+            <lightning:input type="checkbox" checked="{!answers.isChecked}" label="{!answers.Name}"/>
         </aura:iteration>
     </aura:iteration>
     <div class="slds-container slds-container_fluid slds-text-align_right  slds-p-top_medium">

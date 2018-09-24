@@ -3,12 +3,9 @@
     <fullName>Question__c</fullName>
     <externalId>false</externalId>
     <label>Question</label>
-    <referenceTo>Question__c</referenceTo>
-    <relationshipLabel>Survey Responses</relationshipLabel>
-    <relationshipName>Survey_Responses</relationshipName>
-    <relationshipOrder>1</relationshipOrder>
-    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <length>255</length>
+    <required>false</required>
     <trackTrending>false</trackTrending>
-    <type>MasterDetail</type>
-    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    <type>Text</type>
+    <unique>false</unique>
 </CustomField>

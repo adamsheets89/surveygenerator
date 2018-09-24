@@ -25,7 +25,7 @@
             <componentName>force:detailPanel</componentName>
         </componentInstances>
         <componentInstances>
-            <componentName>createSurveyButton</componentName>
+            <componentName>takeSurveyButton</componentName>
         </componentInstances>
         <mode>Replace</mode>
         <name>detailTabContent</name>

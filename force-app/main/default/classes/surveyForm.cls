@@ -33,23 +33,23 @@ public with sharing class surveyForm {
             List<Survey_Response__c> resList = new List<Survey_Response__c>();
 
             Survey_History__c history = new Survey_History__c(
-                Survey__c = recordId
+                Survey__c = recordId,
+                User__c = userinfo.getUserId()
             );
-            insert history;
 
-            String historyId = [SELECT Id
-                                FROM Survey_History__c
-                                WHERE Survey__c=:recordId].Id;
+            insert history;
 
             for (Object o : surveyResponses) {
                 Map<String,Object> surveyResponse = (Map<String,Object>)o;
                 Survey_Response__c sr = new Survey_Response__c(
                     Answer__c = (String)surveyResponse.get('answer'),
                     Question__c = (String)surveyResponse.get('question'),
-                    Survey_History__c = historyId
+                    Survey_History__c = history.Id,
+                    User__c = userinfo.getUserId()
                 );
                 resList.add(sr);
             }
+
             insert resList;
 
         } catch (Exception e) {

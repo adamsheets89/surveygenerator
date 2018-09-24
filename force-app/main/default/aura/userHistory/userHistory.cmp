@@ -1,0 +1,6 @@
+<aura:component controller="userHistory" implements="flexipage:availableForRecordHome, force:appHostable">
+    <aura:attribute name="surveyHistory" type="Object"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>
+
+</aura:component>	

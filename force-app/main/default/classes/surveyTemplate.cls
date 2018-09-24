@@ -39,22 +39,18 @@ public with sharing class surveyTemplate {
                     if((String)objectMap.get('question') == q.Name){
                         Answer__c a1 = new Answer__c(
                             Name = (String)answersMap.get('answerOne'),
-                            Survey__c = recordId,
                             Question__c = q.Id);
 
                         Answer__c a2 = new Answer__c(
                             Name = (String)answersMap.get('answerTwo'),
-                            Survey__c = recordId,
                             Question__c = q.Id);
 
                         Answer__c a3 = new Answer__c(
                             Name = (String)answersMap.get('answerThree'),
-                            Survey__c = recordId,
                             Question__c = q.Id);
 
                         Answer__c a4 = new Answer__c(
                             Name = (String)answersMap.get('answerFour'),
-                            Survey__c = recordId,
                             Question__c = q.Id);
                         
                         answers.add(a1);
@@ -64,10 +60,7 @@ public with sharing class surveyTemplate {
                     }
                 }
             }
-            insert answers;
-
-
-          
+            insert answers;          
       } catch (Exception e) {
           rd.addError(e.getMessage());
       }

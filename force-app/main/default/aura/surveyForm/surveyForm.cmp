@@ -1,0 +1,17 @@
+<aura:component controller="surveyForm" implements="flexipage:availableForRecordHome">
+    <aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="surveyInfo" type="Object"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>
+
+    <aura:iteration items="{!v.surveyInfo}" var="survey">
+        <lightning:input value="{!survey.Name}" readonly="true"/>
+        <aura:iteration items="{!survey.Answers__r.records}" var="answers">
+            <ui:inputCheckbox label="{!answers.Name}"/>
+        </aura:iteration>
+    </aura:iteration>
+    <div class="slds-container slds-container_fluid slds-text-align_right  slds-p-top_medium">
+        <lightning:button label="Submit Survey" value="Submit Survey" variant="neutral" onclick="{!c.clickSubmitSurvey}"/>
+    </div>
+</aura:component>	
+

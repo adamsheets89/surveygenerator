@@ -1,0 +1,17 @@
+<aura:component controller="surveyHistory" implements="flexipage:availableForRecordHome, force:appHostable, force:hasRecordId">
+    <aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="surveyHistory" type="Object"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>
+
+    <lightning:accordion aura:id="accordion">
+            <aura:iteration items="{!v.surveyHistory}" var="history">
+                <lightning:accordionSection label="{!history.Name}">
+                    <aura:iteration items="{!history.Survey_Responses__r.records}" var="responses">
+                        <lightning:input value="{!responses.Question__c + '  ' + responses.Answer__c}" readonly="true"/>
+                    </aura:iteration> 
+                </lightning:accordionSection>
+            </aura:iteration>
+        </lightning:accordion>
+        
+</aura:component>	

@@ -6,8 +6,10 @@
         });
         action.setCallback(this, function(response){
             var parsedRes = JSON.parse(response.getReturnValue());
+            console.log('line 9 res ', JSON.stringify(parsedRes));
             if (parsedRes.isSuccess){
                 component.set('v.surveyInfo', parsedRes.results.surveyInfo);
+                component.set('v.surveyName', parsedRes.results.surveyName);
             } else {
                 console.log(parsedRes.error);
             }
@@ -33,6 +35,7 @@
         }
         var params = {
             surveyResponses : surveyResponses,
+            surveyName : component.get('v.surveyName'),
             recordId : component.get("v.recordId")
         }
         var action = component.get('c.saveSurveyResponse');

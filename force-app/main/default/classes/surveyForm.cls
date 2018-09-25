@@ -14,7 +14,12 @@ public with sharing class surveyForm {
                                            FROM Answers__r)
                                            From Question__c
                                            WHERE Survey__c =:recordId];
-
+                
+            String surveyName = [SELECT Name
+                                 FROM Survey__c
+                                 WHERE Id=:recordId].Name;
+            
+            rd.put('surveyName', surveyName);
             rd.put('surveyInfo', surveyInfo);
         } catch (Exception e) {
             rd.addError(e.getMessage());
@@ -29,10 +34,12 @@ public with sharing class surveyForm {
         try {
             Map<String,Object> params = (Map <String, Object>)JSON.deserializeUntyped(jsonString);
             String recordId = (String)params.get('recordId');
+            String surveyName = (String)params.get('surveyName');
             List<Object> surveyResponses = (List<Object>)params.get('surveyResponses');
             List<Survey_Response__c> resList = new List<Survey_Response__c>();
 
             Survey_History__c history = new Survey_History__c(
+                Name = surveyName,
                 Survey__c = recordId,
                 User__c = userinfo.getUserId()
             );

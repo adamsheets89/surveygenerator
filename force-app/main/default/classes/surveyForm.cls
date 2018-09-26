@@ -9,18 +9,20 @@ public with sharing class surveyForm {
         responseData rd = new responseData();
 
         try {
-            List<Question__c> surveyInfo = [SELECT Id, Name, Survey__c, 
-                                           (SELECT Id, Name
-                                           FROM Answers__r)
-                                           From Question__c
-                                           WHERE Survey__c =:recordId];
+            List<Question__c> questionswithAnswers = [SELECT Id, Name__c, Survey__c, 
+                                                          (
+                                                              SELECT Id, Name__c
+                                                              FROM Answers__r
+                                                          )
+                                                      From Question__c
+                                                      WHERE Survey__c =:recordId];
                 
             String surveyName = [SELECT Name
                                  FROM Survey__c
                                  WHERE Id=:recordId].Name;
             
             rd.put('surveyName', surveyName);
-            rd.put('surveyInfo', surveyInfo);
+            rd.put('questionswithAnswers', questionswithAnswers);
         } catch (Exception e) {
             rd.addError(e.getMessage());
         }
@@ -39,7 +41,7 @@ public with sharing class surveyForm {
             List<Survey_Response__c> resList = new List<Survey_Response__c>();
 
             Survey_History__c history = new Survey_History__c(
-                Name = surveyName,
+                Survey_Name__c = surveyName,
                 Survey__c = recordId,
                 User__c = userinfo.getUserId()
             );

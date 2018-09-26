@@ -9,8 +9,8 @@
     <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
     <label>Survey Generator</label>
     <navType>Standard</navType>
-    <tabs>Survey_Template__c</tabs>
-    <tabs>surveyTemplate</tabs>
+    <tabs>Survey__c</tabs>
+    <tabs>Survey_History</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>Survey_Generator_UtilityBar</utilityBar>
 </CustomApplication>

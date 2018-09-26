@@ -6,6 +6,7 @@
         });
         action.setCallback(this, function(response){
             var parsedRes = JSON.parse(response.getReturnValue());
+            console.log('line 9 res ', JSON.stringify(parsedRes));
             if(parsedRes.isSuccess) {
                 component.set('v.surveyHistory', parsedRes.results.surveyList);
 

@@ -18,10 +18,19 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>surveyTemplate</apexClass>
+        <apexClass>surveyHistory</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>userHistory</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <custom>false</custom>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Answer__c.Name__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
         <field>Answer__c.Question__c</field>
@@ -29,7 +38,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Question__c.Name__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Question__c.Survey__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Survey_History__c.Survey_Name__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -134,10 +153,6 @@
         <object>Survey__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
-    <pageAccesses>
-        <apexPage>surveyTemplate</apexPage>
-        <enabled>true</enabled>
-    </pageAccesses>
     <tabVisibilities>
         <tab>Survey__c</tab>
         <visibility>DefaultOn</visibility>

@@ -1,19 +1,19 @@
 <aura:component controller="surveyForm" implements="flexipage:availableForRecordHome">
     <aura:attribute name="recordId" type="String"/>
-    <aura:attribute name="surveyName" type="Object"/>
-    <aura:attribute name="surveyInfo" type="Object"/>
+    <aura:attribute name="surveyName" type="String"/>
+    <aura:attribute name="questionswithAnswers" type="Object[]"/>
 
     <aura:handler name="init" value="{!this}" action="{!c.init}"/>
 
-    <lightning:input value="{!v.surveyName}"/>
+    <lightning:input value="{!v.surveyName}" readonly="true"/>
 
-    <aura:iteration items="{!v.surveyInfo}" var="survey">
-        <lightning:input value="{!survey.Name}" readonly="true"/>
-        <aura:iteration items="{!survey.Answers__r.records}" var="answers">
-            <lightning:input type="checkbox" checked="{!answers.isChecked}" label="{!answers.Name}"/>
+    <aura:iteration items="{!v.questionswithAnswers}" var="question">
+        <lightning:input value="{!question.Name__c}" readonly="true"/>
+        <aura:iteration items="{!question.Answers__r.records}" var="answer">
+            <lightning:input type="checkbox" checked="{!answer.isChecked}" label="{!answer.Name__c}"/>
         </aura:iteration>
     </aura:iteration>
     <div class="slds-container slds-container_fluid slds-text-align_right  slds-p-top_medium">
-        <lightning:button label="Submit Survey" value="Submit Survey" variant="neutral" onclick="{!c.clickSubmitSurvey}"/>
+        <lightning:button label="Submit Survey" value="Submit Survey" variant="neutral" onclick="{!c.submitSurvey}"/>
     </div>
-</aura:component>
+</aura:component>	

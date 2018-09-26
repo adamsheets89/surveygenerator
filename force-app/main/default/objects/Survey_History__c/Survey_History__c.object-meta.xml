@@ -54,8 +54,9 @@
     <enableStreamingApi>true</enableStreamingApi>
     <label>Survey History</label>
     <nameField>
+        <displayFormat>H-{00000}</displayFormat>
         <label>Survey History Name</label>
-        <type>Text</type>
+        <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Survey Histories</pluralLabel>
     <searchLayouts/>

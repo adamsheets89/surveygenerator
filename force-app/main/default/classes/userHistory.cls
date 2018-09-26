@@ -6,7 +6,7 @@ public with sharing class userHistory {
         try {
             String userId = userinfo.getUserId();
 
-            List<Survey_History__c> userSurveyList = [SELECT Id, Survey__c, Name,
+            List<Survey_History__c> userSurveyList = [SELECT Id, Survey__c, Survey_Name__c, Name,
                                                      (SELECT Id, Question__c, Answer__c
                                                       FROM Survey_Responses__r)
                                                       FROM Survey_History__c

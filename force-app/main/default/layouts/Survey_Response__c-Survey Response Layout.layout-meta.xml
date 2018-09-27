@@ -20,11 +20,11 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>User__c</field>
+                <field>Survey_History__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Survey_History__c</field>
+                <field>Sequence__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>

@@ -5,12 +5,13 @@
 
     <aura:handler name="init" value="{!this}" action="{!c.init}"/>
 
-    <lightning:input value="{!v.surveyName}" readonly="true"/>
+    <p>{!v.surveyName}</p>
 
     <aura:iteration items="{!v.questionswithAnswers}" var="question">
-        <lightning:input value="{!question.Name__c}" readonly="true"/>
+        {!question.Name__c}
         <aura:iteration items="{!question.Answers__r.records}" var="answer">
             <lightning:input type="checkbox" checked="{!answer.isChecked}" label="{!answer.Name__c}"/>
+            <br/>
         </aura:iteration>
     </aura:iteration>
     <div class="slds-container slds-container_fluid slds-text-align_right  slds-p-top_medium">

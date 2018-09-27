@@ -1,4 +1,4 @@
-<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId">
+<aura:component implements="force:lightningQuickAction, flexipage:availableForRecordHome,force:hasRecordId">
 
     <lightning:button label="Take Survey"
                       title="Take Survey"

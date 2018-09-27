@@ -28,6 +28,11 @@
     <custom>true</custom>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Answer__c.Answer_Number__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Answer__c.Name__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -73,12 +78,12 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Survey_Response__c.Survey_History__c</field>
+        <field>Survey_Response__c.Sequence__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Survey_Response__c.User__c</field>
+        <field>Survey_Response__c.Survey_History__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <layoutAssignments>
@@ -99,6 +104,10 @@
     <layoutAssignments>
         <layout>Survey__c-Survey Layout</layout>
     </layoutAssignments>
+    <pageAccesses>
+        <apexPage>takeSurvey</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
     <tabVisibilities>
         <tab>Survey__c</tab>
         <visibility>DefaultOn</visibility>

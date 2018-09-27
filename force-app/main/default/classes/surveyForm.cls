@@ -9,13 +9,15 @@ public with sharing class surveyForm {
         responseData rd = new responseData();
 
         try {
-            List<Question__c> questionswithAnswers = [SELECT Id, Name__c, Survey__c, 
+            List<Question__c> questionswithAnswers = [SELECT Id, Name__c, Survey__c, Question_Number__c, 
                                                           (
                                                               SELECT Id, Name__c
                                                               FROM Answers__r
+                                                              ORDER BY Answer_Number__c
                                                           )
-                                                      From Question__c
-                                                      WHERE Survey__c =:recordId];
+                                                      FROM Question__c
+                                                      WHERE Survey__c =:recordId
+                                                      ORDER BY Question_Number__c];
                 
             String surveyName = [SELECT Name
                                  FROM Survey__c
@@ -54,7 +56,7 @@ public with sharing class surveyForm {
                     Answer__c = (String)surveyResponse.get('answer'),
                     Question__c = (String)surveyResponse.get('question'),
                     Survey_History__c = history.Id,
-                    User__c = userinfo.getUserId()
+                    Sequence__c = (Integer)surveyResponse.get('sequence')
                 );
                 resList.add(sr);
             }

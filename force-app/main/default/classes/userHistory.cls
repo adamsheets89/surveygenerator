@@ -6,13 +6,16 @@ public with sharing class userHistory {
         try {
             String userId = userinfo.getUserId();
 
-            List<Survey_History__c> userSurveyList = [SELECT Id, Survey__c, Survey_Name__c, Name,
-                                                     (SELECT Id, Question__c, Answer__c
-                                                      FROM Survey_Responses__r)
+            List<Survey_History__c> userSurveyList = [SELECT Id, Survey__c, Survey_Name__c, Name, Survey__r.CreatedDate,
+                                                          (
+                                                              SELECT Id, Question__c, Answer__c
+                                                              FROM Survey_Responses__r
+                                                              ORDER BY Sequence__c
+                                                          )
                                                       FROM Survey_History__c
                                                       WHERE User__c=:userId
                                                       ORDER BY CreatedDate DESC];
-
+            
             rd.put('userSurveyList', userSurveyList);
         } catch (Exception e) {
             rd.addError(e.getMessage());

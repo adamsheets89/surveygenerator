@@ -1,0 +1,11 @@
+<apex:page standardController="Survey__c" docType="html-5.0" title="{!Survey__c.Name}" >
+    <apex:includeLightning />
+    <div id="lightning"/>
+    <script>
+        $Lightning.use('c:lightningOut', function () {
+            $Lightning.createComponent('c:surveyForm', {
+                recordId: '{!JSENCODE($CurrentPage.parameters.id)}'
+            }, 'lightning');
+        });
+    </script>
+</apex:page>

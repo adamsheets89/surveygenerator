@@ -18,24 +18,28 @@
 
     submitSurvey : function(component, event, helper) {
         var surveyResults = component.get('v.questionswithAnswers');
+        var recordId = component.get('v.recordId');
         var surveyResponses = [];
 
         for (var i=0; i<surveyResults.length; i++) {
+            var response = {
+                question: surveyResults[i].Name__c,
+                answer: '',
+                sequence: surveyResults[i].Question_Number__c
+            };
             var answers = surveyResults[i].Answers__r.records
             for (var j=0; j<answers.length; j++) {
                 if (answers[j].isChecked === true) {
-                    var response = {
-                        question: surveyResults[i].Name__c,
-                        answer: answers[j].Name__c
-                    }
-                    surveyResponses.push(response);
-                }
+                    response.answer = answers[j].Name__c;
+                } 
             }
+            surveyResponses.push(response)
         }
+
         var params = {
             surveyResponses : surveyResponses,
             surveyName : component.get('v.surveyName'),
-            recordId : component.get("v.recordId")
+            recordId : recordId
         };
         var action = component.get('c.saveSurveyResponse');
         action.setParams({
@@ -44,10 +48,7 @@
         action.setCallback(this, function(response){
             var parsedRes = JSON.parse(response.getReturnValue());
             if (parsedRes.isSuccess){
-                var evt = $A.get("e.force:navigateToSObject");
-                evt.setParams({
-                    "recordId": component.get("v.recordId"),
-                });
+                var evt = sforce.one.navigateToSObject(recordId)
                 evt.fire();
             } else {
                 console.log(parsedRes.error)

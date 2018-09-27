@@ -11,7 +11,6 @@
         {!question.Name__c}
         <aura:iteration items="{!question.Answers__r.records}" var="answer">
             <lightning:input type="checkbox" checked="{!answer.isChecked}" label="{!answer.Name__c}"/>
-            <br/>
         </aura:iteration>
     </aura:iteration>
     <div class="slds-container slds-container_fluid slds-text-align_right  slds-p-top_medium">

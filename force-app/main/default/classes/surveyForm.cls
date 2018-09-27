@@ -39,12 +39,14 @@ public with sharing class surveyForm {
             Map<String,Object> params = (Map <String, Object>)JSON.deserializeUntyped(jsonString);
             String recordId = (String)params.get('recordId');
             String surveyName = (String)params.get('surveyName');
+            Integer numberOfQuestions = (Integer)params.get('numberOfQuestions');
             List<Object> surveyResponses = (List<Object>)params.get('surveyResponses');
             List<Survey_Response__c> resList = new List<Survey_Response__c>();
 
             Survey_History__c history = new Survey_History__c(
                 Survey_Name__c = surveyName,
                 Survey__c = recordId,
+                Number_of_Questions__c = numberOfQuestions,
                 User__c = userinfo.getUserId()
             );
 
@@ -52,8 +54,10 @@ public with sharing class surveyForm {
 
             for (Object o : surveyResponses) {
                 Map<String,Object> surveyResponse = (Map<String,Object>)o;
+                List<Object> answersList = (List<Object>)surveyResponse.get('answer');
+                String answersListString = String.join(answersList,', ');
                 Survey_Response__c sr = new Survey_Response__c(
-                    Answer__c = (String)surveyResponse.get('answer'),
+                    Answer__c = answersListString,
                     Question__c = (String)surveyResponse.get('question'),
                     Survey_History__c = history.Id,
                     Sequence__c = (Integer)surveyResponse.get('sequence')

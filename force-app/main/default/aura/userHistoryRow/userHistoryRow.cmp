@@ -1,0 +1,74 @@
+<aura:component >
+    <aura:attribute name="history" type="Object"/>
+    <aura:attribute name="isExpanded" type="Boolean"/>
+
+
+	<div class="slds-p-horizontal_small">
+        <div class="{! 'slds-section' + (v.isExpanded ? ' slds-is-open' : '')}">
+            <h3 class="slds-section__title">
+                <button aria-controls="expando-unique-id" aria-expanded="{!v.isExpanded}" class="slds-button slds-section__title-action" onclick="{!c.changeState}">
+                    <lightning:icon iconName="utility:switch" alternativeText="View Results" size="x-small" class="slds-m-right_small"/>
+                    <span class="slds-truncate" title="Section Title">{!v.history.Survey_Name__c}</span>
+                </button>
+            </h3>
+            <div aria-hidden="{!!v.isExpanded}" class="slds-section__content slds-p-horizontal_medium" id="expando-unique-id">
+                <lightning:tabset>
+                    <lightning:tab label="Responses">
+                        <aura:iteration items="{!v.history.Survey_Responses__r.records}" var="responses">
+                            
+                            <div class="sm-container_responses slds-p-horizontal_small slds-scrollable_y">
+                                <ul class="sm-question-list">
+                                    <li class="sm-question-list__item slds-p-vertical_large slds-p-horizontal_x-small">
+                                        <!-- Question -->
+                                        <h2 class="slds-text-heading_medium slds-m-bottom_medium">
+                                            {!responses.Question__c}
+                                        </h2>
+                                        <!-- /Question -->
+                                        <!-- Response -->
+                                        <h4 class="slds-text-heading_small slds-m-left_medium">
+                                            {!responses.Answer__c}
+                                        </h4>
+                                        <!-- /Response -->
+                                    </li>              
+                                </ul>
+                            </div>
+                        </aura:iteration>
+                    </lightning:tab>
+                    <lightning:tab label="Survey Details">
+                        <div class="slds-p-horizontal_small">
+                            <div class="slds-form slds-form_compound">
+                                <div class="slds-form slds-form_compound">
+                                    <div class="slds-form-element__row">
+                                        <div class="slds-form-element slds-size_1-of-1">
+                                            <label class="slds-form-element__label" for="input-01">Survey Name</label>
+                                            <input type="text" readonly="true" id="input-01" class="slds-input" value="{!v.history.Survey_Name__c}"/>
+                                        </div>
+                                    </div>
+                                    <div class="slds-form-element__row">
+                                        <div class="slds-form-element slds-size_1-of-2">
+                                            <label class="slds-form-element__label" for="input-02">Date Issued</label>
+                                            <input type="text" readonly="true" id="input-02" class="slds-input" value="{!v.history.Survey__r.CreatedDate}"/>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="slds-form-element__row">
+                                        <div class="slds-form-element slds-size_1-of-1">
+                                            <label class="slds-form-element__label" for="input-01">Number of Questions</label>
+                                            <input type="text" readonly="true" id="input-01" class="slds-input" value="{!v.history.Number_of_Questions__c}"/>
+                                        </div>
+                                    </div>
+                                    <div class="slds-form-element__row">
+                                        <div class="slds-form-element slds-size_1-of-1">
+                                            <label class="slds-form-element__label" for="input-01">Salesforce Record</label>
+                                            <input type="text" readonly="true" class="slds-input" value="{!v.history.Id}"/> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </lightning:tab>
+                </lightning:tabset>
+            </div>
+        </div>
+    </div>
+</aura:component>

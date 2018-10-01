@@ -1,15 +1,14 @@
-<aura:component >
+<aura:component>
     <aura:attribute name="history" type="Object"/>
     <aura:attribute name="isExpanded" type="Boolean"/>
 
-
-	<div class="slds-p-horizontal_small">
+    <div class="slds-p-horizontal_small">
         <div class="{! 'slds-section' + (v.isExpanded ? ' slds-is-open' : '')}">
             <h3 class="slds-section__title">
                 <button aria-controls="expando-unique-id" aria-expanded="{!v.isExpanded}" class="slds-button slds-section__title-action" onclick="{!c.changeState}">
                     <lightning:icon iconName="utility:switch" alternativeText="View Results" size="x-small" class="slds-m-right_small"/>
                     <span class="slds-truncate" title="Section Title">
-                        {!v.history.Survey_Name__c}&nbsp;
+                        {!v.history.User__r.Name}&nbsp;
                         <lightning:formattedDateTime value="{!v.history.CreatedDate}" />
                     </span>
                 </button>
@@ -77,4 +76,4 @@
             </div>
         </div>
     </div>
-</aura:component>
+</aura:component>	

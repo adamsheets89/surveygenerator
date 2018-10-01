@@ -4,13 +4,16 @@ public with sharing class surveyHistory {
         responseData rd = new responseData();
         System.debug('line 5 id ' + recordId);
         try {
-            List<Survey_History__c> surveyList = [SELECT Id, Name,
-                                                 (SELECT Id, Question__c, Answer__c
-                                                  FROM Survey_Responses__r)
+            List<Survey_History__c> surveyList = [SELECT Id, Survey__c, Survey_Name__c, Name, CreatedDate, Survey__r.CreatedDate, User__r.Name, Number_of_Questions__c,
+                                                      (
+                                                          SELECT Id, Question__c, Answer__c
+                                                          FROM Survey_Responses__r
+                                                          ORDER BY Sequence__c
+                                                      )
                                                   FROM Survey_History__c
                                                   WHERE Survey__c=:recordId
                                                   ORDER BY CreatedDate DESC];
-            System.debug('line 13 list ' + surveyList);
+ 
             rd.put('surveyList', surveyList);
         } catch (Exception e) {
             rd.addError(e.getMessage());

@@ -6,6 +6,10 @@
             var userSurveyList = parsedRes.results.userSurveyList;
             if (parsedRes.isSuccess){
                 if (!$A.util.isEmpty(userSurveyList)) {
+                    userSurveyList.forEach(function(survey) {
+                        survey.CreatedDate = new Date(survey.CreatedDate).getTime();
+                        survey.Survey__r.CreatedDate = new Date(survey.Survey__r.CreatedDate).getTime();
+                    });
                     component.set('v.surveyHistory', userSurveyList);
                     component.set('v.user', userSurveyList[0].User__r.Name);
                 } else {

@@ -2,7 +2,7 @@ public with sharing class surveyHistory {
     @AuraEnabled
     public static string getSurveyHistory(String recordId){
         responseData rd = new responseData();
-        System.debug('line 5 id ' + recordId);
+ 
         try {
             List<Survey_History__c> surveyList = [SELECT Id, Survey__c, Survey_Name__c, Name, CreatedDate, Survey__r.CreatedDate, User__r.Name, Number_of_Questions__c,
                                                       (
@@ -13,7 +13,7 @@ public with sharing class surveyHistory {
                                                   FROM Survey_History__c
                                                   WHERE Survey__c=:recordId
                                                   ORDER BY CreatedDate DESC];
- 
+            System.debug('line 16 ' + surveyList);
             rd.put('surveyList', surveyList);
         } catch (Exception e) {
             rd.addError(e.getMessage());

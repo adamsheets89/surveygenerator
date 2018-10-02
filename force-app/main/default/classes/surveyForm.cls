@@ -54,10 +54,8 @@ public with sharing class surveyForm {
 
             for (Object o : surveyResponses) {
                 Map<String,Object> surveyResponse = (Map<String,Object>)o;
-                List<Object> answersList = (List<Object>)surveyResponse.get('answer');
-                String answersListString = String.join(answersList,', ');
                 Survey_Response__c sr = new Survey_Response__c(
-                    Answer__c = answersListString,
+                    Answer__c = (String)surveyResponse.get('answer'),
                     Question__c = (String)surveyResponse.get('question'),
                     Survey_History__c = history.Id,
                     Sequence__c = (Integer)surveyResponse.get('sequence')

@@ -2,13 +2,24 @@
 
     <aura:attribute name="recordId" type="String"/>
     <aura:attribute name="surveyHistory" type="Object"/>
+    <aura:attribute name="surveyName" type="String"/>
+    <aura:attribute name="isParentExpanded" type="Boolean"/>
 
     <aura:handler name="init" value="{!this}" action="{!c.init}"/>
-    
-    <aura:iteration items="{!v.surveyHistory}" var="history">
-            <c:surveyHistoryRow
-                history="{!history}"/>
-    </aura:iteration>
-
+    <div class="{! 'slds-section' + (v.isParentExpanded ? ' slds-is-open' : '')}">
+        <h3 class="slds-section__title">
+            <button aria-controls="expando-unique-id" aria-expanded="{!v.isParentExpanded}" class="slds-button slds-section__title-action" onclick="{!c.changeParentState}">
+                <lightning:icon iconName="{!v.isParentExpanded ? 'utility:switch' : 'utility:chevronright'}" alternativeText="View Results" size="x-small" class="slds-m-right_small"/>
+                <span class="slds-truncate" title="Section Title">{!v.surveyName}</span>
+            </button>
+        </h3>
+        <div aria-hidden="{!!v.isParentExpanded}" class="slds-section__content slds-p-horizontal_medium">
+            <aura:iteration items="{!v.surveyHistory}" var="history">
+                    <c:surveyHistoryRow
+                        history="{!history}"
+                        />
+            </aura:iteration>
+        </div>
+    </div>
 	
 </aura:component>

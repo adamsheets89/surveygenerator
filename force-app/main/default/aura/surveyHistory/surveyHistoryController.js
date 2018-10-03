@@ -8,15 +8,15 @@
             var parsedRes = JSON.parse(response.getReturnValue());
             if(parsedRes.isSuccess) {
                 var surveyList = parsedRes.results.surveyList;
-                surveyList.forEach(function(survey) {
-                    survey.CreatedDate = new Date(survey.CreatedDate).getTime();
-                    survey.Survey__r.CreatedDate = new Date(survey.Survey__r.CreatedDate).getTime();
-                });
                 component.set('v.surveyHistory', surveyList);
+                component.set('v.surveyName', surveyList[0].surveyName);
             } else {
                 console.log(parsedRes.error);
             }
         });
         $A.enqueueAction(action);
+    },
+    changeParentState : function(component, event, helper) {
+        component.set('v.isParentExpanded', !component.get('v.isParentExpanded'));
     }
 })

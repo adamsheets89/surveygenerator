@@ -1,0 +1,13 @@
+.THIS .test {
+    background-color: rgb(255, 255, 255);
+    border-radius: .25rem;
+    width: 100%;
+    -webkit-transition: border .1s linear,background-color .1s linear;
+    transition: border .1s linear,background-color .1s linear;
+    display: inline-block;
+    line-height: 1.875rem;
+    min-height: calc(1.875rem + (1px * 2));
+}
+.THIS .sm-question-list__item{
+    border-bottom: 1px solid rgb(221, 219, 218);
+}

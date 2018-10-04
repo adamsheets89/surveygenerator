@@ -1,4 +1,4 @@
-<aura:component controller="surveyHistory" implements="force:appHostable,flexipage:availableForAllPageTypes, force:hasRecordId">
+<aura:component controller="surveyHistory" implements="force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId">
     <aura:attribute name="recordId" type="String"/>
     <aura:attribute name="surveyHistory" type="Object"/>
     <aura:attribute name="surveyName" type="String"/>

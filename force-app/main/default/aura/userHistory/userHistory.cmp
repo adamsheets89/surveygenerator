@@ -8,7 +8,6 @@
 
     <c:toast toast="{!v.toast}"/>
 
-
     <aura:if isTrue="{!v.isLoading}">
         <lightning:spinner class="slds-is-fixed"/>
         <aura:set attribute="else">

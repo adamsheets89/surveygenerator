@@ -14,16 +14,15 @@
                 }
                 component.set('v.isLoading', false);
             } else {
-                component.set('v.toast', {
+                helper.renderToast(component, {
                     message: parsedRes.error,
                     type: 'error',
-                    iconName: 'utility:error'
-                });
+                    mode: 'sticky'
+				});
             }
         });
         $A.enqueueAction(action);
     },
-
     submitSurvey : function(component, event, helper) {
         var surveyResults = component.get('v.questionswithAnswers');
         var recordId = component.get('v.recordId');
@@ -68,11 +67,11 @@
                 evt.fire();
             
             } else {
-                component.set('v.toast', {
+                helper.renderToast(component, {
                     message: parsedRes.error,
                     type: 'error',
-                    iconName: 'utility:error'
-                });
+                    mode: 'sticky'
+				});
             }
         });
         $A.enqueueAction(action);

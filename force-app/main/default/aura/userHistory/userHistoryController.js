@@ -11,11 +11,11 @@
                 } 
                 component.set('v.isLoading', false);
             } else {
-                component.set('v.toast', {
+                helper.renderToast(component, {
                     message: parsedRes.error,
                     type: 'error',
-                    iconName: 'utility:error'
-                });
+                    mode: 'sticky'
+				});
             }
         });
         $A.enqueueAction(action);

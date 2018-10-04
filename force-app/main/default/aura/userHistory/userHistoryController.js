@@ -3,19 +3,19 @@
         var action = component.get('c.getUserHistory');
         action.setCallback(this, function(response){
             var parsedRes = JSON.parse(response.getReturnValue());
-            var surveys = parsedRes.results.surveys;
-            console.log(JSON.stringify(surveys[0]));
             if (parsedRes.isSuccess){
+                var surveys = parsedRes.results.surveys;
                 if (!$A.util.isEmpty(surveys)) {
                     component.set('v.surveyHistory', surveys);
                     component.set('v.user', surveys[0].user);
-                } else {
-                    //show toast
-                    console.log('EMPTY');
-                }
+                } 
+                component.set('v.isLoading', false);
             } else {
-                //show toast
-                console.log(parsedRes.error)
+                component.set('v.toast', {
+                    message: parsedRes.error,
+                    type: 'error',
+                    iconName: 'utility:error'
+                });
             }
         });
         $A.enqueueAction(action);

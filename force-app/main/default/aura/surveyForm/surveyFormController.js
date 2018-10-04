@@ -7,10 +7,18 @@
         action.setCallback(this, function(response){
             var parsedRes = JSON.parse(response.getReturnValue());
             if (parsedRes.isSuccess){
-                component.set('v.questionswithAnswers', parsedRes.results.questionswithAnswers);
-                component.set('v.surveyName', parsedRes.results.surveyName);
+                var questionswithAnswers = parsedRes.results.questionswithAnswers;
+                if (!$A.util.isEmpty(questionswithAnswers)) {
+                    component.set('v.questionswithAnswers', questionswithAnswers);
+                    component.set('v.surveyName', parsedRes.results.surveyName);
+                }
+                component.set('v.isLoading', false);
             } else {
-                console.log(parsedRes.error);
+                component.set('v.toast', {
+                    message: parsedRes.error,
+                    type: 'error',
+                    iconName: 'utility:error'
+                });
             }
         });
         $A.enqueueAction(action);
@@ -58,8 +66,13 @@
             if (parsedRes.isSuccess){
                 var evt = sforce.one.navigateToSObject(recordId)
                 evt.fire();
+            
             } else {
-                console.log(parsedRes.error)
+                component.set('v.toast', {
+                    message: parsedRes.error,
+                    type: 'error',
+                    iconName: 'utility:error'
+                });
             }
         });
         $A.enqueueAction(action);

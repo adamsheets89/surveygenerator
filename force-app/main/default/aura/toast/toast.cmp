@@ -1,0 +1,27 @@
+<aura:component>
+    <aura:attribute name="toast" type="Object"/>
+    <!-- Error State -->
+    <div class="{!'slds-notify_container strike-setup-toast' + if(not(empty(v.toast)), ' show', '')}">
+        <aura:if isTrue="{!not(empty(v.toast))}">
+            <div class="{!'slds-notify slds-notify_toast slds-theme_' + v.toast.type}" role="alert">
+                <span class="slds-assistive-text">{!v.toast.type}</span>
+                <aura:if isTrue="{!not(empty(v.toast.iconName))}">
+                    <span class="{!'slds-icon_container slds-m-right_small slds-no-flex slds-align-top slds-icon-utility-' + v.toast.type}" title="{!v.toast.type}">
+                        <lightning:icon iconName="{!v.toast.iconName}" size="small" variant="inverse"/>
+                    </span>
+                </aura:if>
+                <div class="slds-notify__content">
+                    <h2 class="slds-text-heading_small ">{!if(not(empty(v.toast.title)), v.toast.title, v.toast.message)}</h2>
+                    <aura:if isTrue="{!not(empty(v.toast.title))}">
+                        <p>{!v.toast.message}</p>
+                    </aura:if>
+                </div>
+                <button class="slds-button slds-button_icon slds-notify__close slds-button_icon-inverse" title="Close" onclick="{!c.hideToast}">
+                    <lightning:buttonIcon iconName="utility:close" alternativeText="add" size="large" variant="bare-inverse"/>
+                    <span class="slds-assistive-text">Close</span>
+                </button>
+            </div>
+        </aura:if>
+    </div>
+    <!-- /Error State -->
+</aura:component>	

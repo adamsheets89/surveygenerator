@@ -8,10 +8,17 @@
             var parsedRes = JSON.parse(response.getReturnValue());
             if(parsedRes.isSuccess) {
                 var surveyList = parsedRes.results.surveyList;
-                component.set('v.surveyHistory', surveyList);
-                component.set('v.surveyName', surveyList[0].surveyName);
+                if (!$A.util.isEmpty(surveyList)) {
+                    component.set('v.surveyHistory', surveyList);
+                    component.set('v.surveyName', surveyList[0].surveyName);
+                } 
+                component.set('v.isLoading', false);
             } else {
-                console.log(parsedRes.error);
+                component.set('v.toast', {
+                    message: parsedRes.error,
+                    type: 'error',
+                    iconName: 'utility:error'
+                });
             }
         });
         $A.enqueueAction(action);

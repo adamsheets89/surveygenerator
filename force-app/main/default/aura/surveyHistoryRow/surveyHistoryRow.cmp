@@ -9,16 +9,16 @@
                     <lightning:icon iconName="{!v.isChildExpanded ? 'utility:switch' : 'utility:chevronright'}" alternativeText="View Results" size="x-small" class="slds-m-right_small"/>
                     <span class="slds-truncate" title="Section Title">
                         {!v.history.user}&nbsp; - &nbsp;
-                        <ui:outputDate class="field" value="{!v.history.createdDate}" format="MM/DD/YYYY"/>  
+                        <ui:outputDate class="field" value="{!v.history.createdDate}" format="M/DD/YYYY"/>  
                     </span>
                 </button>
             </h3>
             <div class="{!'slds-section__content slds-p-horizontal_medium' + if(v.isChildExpanded, '', ' slds-hide')}" id="expando-unique-id">
                 <lightning:tabset>
                     <lightning:tab label="Responses">
-                        <aura:iteration items="{!v.history.questionsWithAnswers}" var="responses" indexVar="index">
-                            <div class="sm-container_responses slds-p-horizontal_small slds-scrollable_y">
-                                <ul class="sm-question-list">
+                        <div class="sm-container_responses slds-p-horizontal_small slds-scrollable_y">
+                            <ul class="sm-question-list">
+                                <aura:iteration items="{!v.history.questionsWithAnswers}" var="responses" indexVar="index">
                                     <li class="sm-question-list__item slds-p-vertical_large slds-p-horizontal_x-small">
                                         <h4 class="slds-text-title_caps slds-m-bottom_small">
                                             <strong>Q{!index + 1}</strong>
@@ -34,9 +34,9 @@
                                         </h4>
                                         <!-- /Response -->
                                     </li>              
-                                </ul>
-                            </div>
-                        </aura:iteration>
+                                </aura:iteration>
+                            </ul>
+                        </div>
                     </lightning:tab>
                     <lightning:tab label="Survey Details">
                         <div class="slds-p-horizontal_small">
@@ -51,17 +51,17 @@
                                     <div class="slds-form-element__row">
                                         <div class="slds-form-element slds-size_1-of-2">
                                             <label class="slds-form-element__label" for="input-02">Date Issued</label>
-                                            <ui:outputDate class="test" value="{!v.history.surveyCreatedDate}" format="MM/DD/YYYY"/>  
+                                            <ui:outputDate class="test" value="{!v.history.surveyCreatedDate}" format="M/DD/YYYY"/>  
                                         </div>
                                         <div class="slds-form-element slds-size_1-of-2">
                                             <label class="slds-form-element__label" for="input-02">Date Returned</label>
-                                            <ui:outputDate class="test" value="{!v.history.createdDate}" format="MM/DD/YYYY"/> 
+                                            <ui:outputDate class="test" value="{!v.history.createdDate}" format="M/DD/YYYY"/> 
                                         </div>
                                     </div>
                                     <div class="slds-form-element__row">
                                         <div class="slds-form-element slds-size_1-of-1">
                                             <label class="slds-form-element__label" for="input-01">Number of Questions</label>
-                                            <input type="slds-input test" readonly="true" id="input-01" value="{!v.history.numberOfQuestions}"/>
+                                            <input type="text" class="slds-input test" readonly="true" id="input-01" value="{!v.history.numberOfQuestions}"/>
                                         </div>
                                     </div>
                                     <div class="slds-form-element__row">

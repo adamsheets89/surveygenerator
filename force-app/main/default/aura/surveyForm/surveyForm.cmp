@@ -1,7 +1,7 @@
 <aura:component controller="surveyForm" implements="flexipage:availableForRecordHome">
     <aura:attribute name="recordId" type="String"/>
     <aura:attribute name="surveyName" type="String"/>
-    <aura:attribute name="questionswithAnswers" type="Object[]"/>
+    <aura:attribute name="questionsWithAnswers" type="Object[]"/>
     <aura:attribute name="toast" type="Object" access="private"/>
     <aura:attribute name="isLoading" type="Boolean" default="{!true}" access="private"/>
 
@@ -11,7 +11,7 @@
     <aura:if isTrue="{!v.isLoading}">
         <lightning:spinner class="slds-is-fixed"/>
         <aura:set attribute="else">
-            <aura:if isTrue="{! empty(v.questionswithAnswers)}">
+            <aura:if isTrue="{! empty(v.questionsWithAnswers)}">
                 <div class="slds-m-around_medium">
                     <h3 class="slds-card__header-title slds-text-heading_small">
                         No questions exist for this survey.
@@ -19,7 +19,7 @@
                 </div>
                 <aura:set attribute="else">
                     <p>{!v.surveyName}</p>
-                    <aura:iteration items="{!v.questionswithAnswers}" var="question">
+                    <aura:iteration items="{!v.questionsWithAnswers}" var="question">
                         {!question.Name__c}
                         <aura:iteration items="{!question.Answers__r.records}" var="answer">
                             <lightning:input type="checkbox" checked="{!answer.isChecked}" label="{!answer.Name__c}"/>

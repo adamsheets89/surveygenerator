@@ -7,9 +7,9 @@
         action.setCallback(this, function(response){
             var parsedRes = JSON.parse(response.getReturnValue());
             if (parsedRes.isSuccess){
-                var questionswithAnswers = parsedRes.results.questionswithAnswers;
-                if (!$A.util.isEmpty(questionswithAnswers)) {
-                    component.set('v.questionswithAnswers', questionswithAnswers);
+                var questionsWithAnswers = parsedRes.results.questionsWithAnswers;
+                if (!$A.util.isEmpty(questionsWithAnswers)) {
+                    component.set('v.questionsWithAnswers', questionsWithAnswers);
                     component.set('v.surveyName', parsedRes.results.surveyName);
                 }
                 component.set('v.isLoading', false);
@@ -24,7 +24,7 @@
         $A.enqueueAction(action);
     },
     submitSurvey : function(component, event, helper) {
-        var surveyResults = component.get('v.questionswithAnswers');
+        var surveyResults = component.get('v.questionsWithAnswers');
         var recordId = component.get('v.recordId');
         var surveyResponses = [];
         var numberOfQuestions = 0;
@@ -71,7 +71,7 @@
                     message: parsedRes.error,
                     type: 'error',
                     mode: 'sticky'
-				});
+				});s
             }
         });
         $A.enqueueAction(action);

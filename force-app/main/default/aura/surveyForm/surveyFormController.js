@@ -10,7 +10,7 @@
                 var questionsWithAnswers = parsedRes.results.questionsWithAnswers;
                 if (!$A.util.isEmpty(questionsWithAnswers)) {
                     component.set('v.questionsWithAnswers', questionsWithAnswers);
-                    component.set('v.surveyName', parsedRes.results.surveyName);
+                    component.set('v.surveyName', questionsWithAnswers[0].Survey__r.Name);
                 }
                 component.set('v.isLoading', false);
             } else {
@@ -27,10 +27,9 @@
         var surveyResults = component.get('v.questionsWithAnswers');
         var recordId = component.get('v.recordId');
         var surveyResponses = [];
-        var numberOfQuestions = 0;
+        var numberOfQuestions = surveyResults.length;
 
         for (var i=0; i<surveyResults.length; i++) {
-            numberOfQuestions++;
             var isAnswered = false;
             var answers = surveyResults[i].Answers__r.records
             for (var j=0; j<answers.length; j++) {

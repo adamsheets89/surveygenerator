@@ -1,7 +1,7 @@
 public with sharing class surveyForm {
     public String namespace { get; set; }
 
-    public surveyForm() {
+    public surveyForm(ApexPages.StandardController controller) {
         namespace = constants.NAMESPACE;
     }
     @AuraEnabled
@@ -9,7 +9,7 @@ public with sharing class surveyForm {
         responseData rd = new responseData();
 
         try {
-            List<Question__c> questionsWithAnswers = [SELECT Id, Name__c, Survey__c, Question_Number__c, 
+            List<Question__c> questionsWithAnswers = [SELECT Id, Name__c, Survey__c, Survey__r.Name, Question_Number__c, 
                                                           (
                                                               SELECT Id, Name__c
                                                               FROM Answers__r
@@ -18,12 +18,7 @@ public with sharing class surveyForm {
                                                       FROM Question__c
                                                       WHERE Survey__c =:recordId
                                                       ORDER BY Question_Number__c];
-                
-            String surveyName = [SELECT Name
-                                 FROM Survey__c
-                                 WHERE Id=:recordId].Name;
-            
-            rd.put('surveyName', surveyName);
+
             rd.put('questionsWithAnswers', questionsWithAnswers);
         } catch (Exception e) {
             rd.addError(e.getMessage());

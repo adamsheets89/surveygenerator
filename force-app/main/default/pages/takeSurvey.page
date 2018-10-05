@@ -1,9 +1,11 @@
-<apex:page standardController="Survey__c" docType="html-5.0" title="{!Survey__c.Name}" >
+<apex:page standardController="Survey__c" extensions="surveyForm" docType="html-5.0" title="{!Survey__c.Name}" >
     <apex:includeLightning />
     <div id="lightning"/>
     <script>
-        $Lightning.use('c:lightningOut', function () {
-            $Lightning.createComponent('c:surveyForm', {
+        var namespace = '{!JSENCODE(namespace)}';
+
+        $Lightning.use(namespace + ':lightningOut', function () {
+            $Lightning.createComponent(namespace + ':surveyForm', {
                 recordId: '{!JSENCODE($CurrentPage.parameters.id)}'
             }, 'lightning');
         });

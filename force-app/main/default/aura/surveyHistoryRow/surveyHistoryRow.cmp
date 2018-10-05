@@ -8,7 +8,7 @@
                 <button aria-controls="expando-unique-id" aria-expanded="{!v.isChildExpanded}" class="slds-button slds-section__title-action" onclick="{!c.changeChildState}">
                     <lightning:icon iconName="{!v.isChildExpanded ? 'utility:switch' : 'utility:chevronright'}" alternativeText="View Results" size="x-small" class="slds-m-right_small"/>
                     <span class="slds-truncate" title="Section Title">
-                        {!v.history.user}&nbsp; - &nbsp;
+                        {!v.history.user} -
                         <ui:outputDate class="field" value="{!v.history.createdDate}" format="M/DD/YYYY"/>  
                     </span>
                 </button>
@@ -23,16 +23,12 @@
                                         <h4 class="slds-text-title_caps slds-m-bottom_small">
                                             <strong>Q{!index + 1}</strong>
                                         </h4>
-                                        <!-- Question -->
                                         <h2 class="slds-text-heading_medium slds-m-bottom_medium">
                                             {!responses.question}
                                         </h2>
-                                        <!-- /Question -->
-                                        <!-- Response -->
                                         <h4 class="slds-text-heading_small slds-m-left_medium">
                                             {!responses.answer}
                                         </h4>
-                                        <!-- /Response -->
                                     </li>              
                                 </aura:iteration>
                             </ul>
@@ -67,7 +63,7 @@
                                     <div class="slds-form-element__row">
                                         <div class="slds-form-element slds-size_1-of-1">
                                             <label class="slds-form-element__label" for="input-01">Salesforce Record</label>
-                                            <a href="" onclick="{!c.navigateToRecord}">{!v.history.name}</a> 
+                                            <a href="javascript:void(0);" onclick="{!c.navigateToRecord}">{!v.history.name}</a> 
                                         </div>
                                     </div>
                                 </div>

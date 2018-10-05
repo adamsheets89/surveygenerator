@@ -8,25 +8,26 @@
     <aura:handler name="init" value="{!this}" action="{!c.init}"/>
 
     <c:toast toast="{!v.toast}"/>
+
     <aura:if isTrue="{!v.isLoading}">
         <lightning:spinner class="slds-is-fixed"/>
         <aura:set attribute="else">
-            <aura:if isTrue="{! empty(v.questionsWithAnswers)}">
-                <div class="slds-m-around_medium">
-                    <h3 class="slds-card__header-title slds-text-heading_small">
-                        No questions exist for this survey.
-                    </h3>
+            <aura:if isTrue="{! not(empty(v.questionsWithAnswers))}">
+                <p>{!v.surveyName}</p>
+                <aura:iteration items="{!v.questionsWithAnswers}" var="question">
+                    {!question.Name__c}
+                    <aura:iteration items="{!question.Answers__r.records}" var="answer">
+                        <lightning:input type="checkbox" checked="{!answer.isChecked}" label="{!answer.Name__c}"/>
+                    </aura:iteration>
+                </aura:iteration>
+                <div class="slds-container slds-container_fluid slds-text-align_right  slds-p-top_medium">
+                    <lightning:button label="Submit Survey" value="Submit Survey" variant="neutral" onclick="{!c.submitSurvey}"/>
                 </div>
                 <aura:set attribute="else">
-                    <p>{!v.surveyName}</p>
-                    <aura:iteration items="{!v.questionsWithAnswers}" var="question">
-                        {!question.Name__c}
-                        <aura:iteration items="{!question.Answers__r.records}" var="answer">
-                            <lightning:input type="checkbox" checked="{!answer.isChecked}" label="{!answer.Name__c}"/>
-                        </aura:iteration>
-                    </aura:iteration>
-                    <div class="slds-container slds-container_fluid slds-text-align_right  slds-p-top_medium">
-                        <lightning:button label="Submit Survey" value="Submit Survey" variant="neutral" onclick="{!c.submitSurvey}"/>
+                    <div class="slds-m-around_medium">
+                        <h3 class="slds-card__header-title slds-text-heading_small">
+                            No questions exist for this survey.
+                        </h3>
                     </div>
                 </aura:set>
             </aura:if>

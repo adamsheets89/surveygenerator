@@ -15,3 +15,8 @@
 .THIS .sm-question-list__item:last-child{
     border-bottom: none;
 }
+
+.THIS .sm-container_responses{
+    max-height: 350px;
+    overscroll-behavior: contain;
+}   

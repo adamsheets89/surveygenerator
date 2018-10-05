@@ -12,26 +12,26 @@
         <lightning:spinner class="slds-is-fixed"/>
         <aura:set attribute="else">
             <div class="slds-scope slds-card">
-                <aura:if isTrue="{! empty(v.surveyHistory)}">
-                    <div class="slds-m-around_medium">
-                        <h3 class="slds-card__header-title slds-text-heading_small">
-                            You have not yet taken any surveys. Please navigate to the "Surveys" tab to begin.
-                        </h3>
+                <aura:if isTrue="{! not(empty(v.surveyHistory))}">
+                    <div class="slds-card__header slds-grid slds-m-bottom_large">
+                        <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                            <div class="slds-media__body">
+                                <h1 class="slds-card__header-title slds-text-heading_large">
+                                    {!v.user} 
+                                </h1>
+                            </div>
+                        </header>
+                    </div>
+                    <div class="slds-card__body slds-card__body_inner">
+                        <aura:iteration items="{!v.surveyHistory}" var="history">
+                            <c:userHistoryRow history="{!history}"/>
+                        </aura:iteration>
                     </div>
                     <aura:set attribute="else">
-                        <div class="slds-card__header slds-grid slds-m-bottom_large">
-                            <header class="slds-media slds-media_center slds-has-flexi-truncate">
-                                <div class="slds-media__body">
-                                    <h1 class="slds-card__header-title slds-text-heading_large">
-                                        {!v.user} 
-                                    </h1>
-                                </div>
-                            </header>
-                        </div>
-                        <div class="slds-card__body slds-card__body_inner">
-                            <aura:iteration items="{!v.surveyHistory}" var="history">
-                                <c:userHistoryRow history="{!history}"/>
-                            </aura:iteration>
+                        <div class="slds-m-around_medium">
+                            <h3 class="slds-card__header-title slds-text-heading_small">
+                                You have not yet taken any surveys. Please navigate to the "Surveys" tab to begin.
+                            </h3>
                         </div>
                     </aura:set>
                 </aura:if>

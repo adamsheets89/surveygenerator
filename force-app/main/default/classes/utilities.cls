@@ -26,9 +26,7 @@ public with sharing class utilities {
             }
             List<Object> questionsWithAnswersList = new List<Object>(); 
             Set<String> questionsSet = new Set<String>();
-            List<String> answersList = new List<String>();
             questionsSet = questionsWithAnswers.keySet();
-            answersList = questionsWithAnswers.values();
 
             for (String q : questionsSet) {
                 Map<String, String> formattedQuestionsWithAnswers = new Map<String, String>();

@@ -1,8 +1,7 @@
 <aura:component controller="surveyHistory" implements="force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId">
-    <aura:attribute name="recordId" type="String"/>
     <aura:attribute name="surveyHistory" type="Object"/>
     <aura:attribute name="surveyName" type="String"/>
-    <aura:attribute name="isParentExpanded" type="Boolean"/>
+    <aura:attribute name="isExpanded" type="Boolean"/>
     <aura:attribute name="isLoading" type="Boolean" default="{!true}" access="private"/>
     <aura:attribute name="toast" type="Object" access="private"/>
 
@@ -15,14 +14,14 @@
         <aura:set attribute="else">
             <div class="slds-card">
                 <aura:if isTrue="{! not(empty(v.surveyHistory))}">
-                    <div class="{! 'slds-section slds-m-around_medium' + (v.isParentExpanded ? ' slds-is-open' : '')}">
+                    <div class="{! 'slds-section slds-m-around_medium' + (v.isExpanded ? ' slds-is-open' : '')}">
                         <h3 class="slds-section__title">
-                            <button aria-controls="expando-unique-id" aria-expanded="{!v.isParentExpanded}" class="slds-button slds-section__title-action" onclick="{!c.changeParentState}">
-                                <lightning:icon iconName="{!v.isParentExpanded ? 'utility:switch' : 'utility:chevronright'}" alternativeText="View Results" size="x-small" class="slds-m-right_small"/>
+                            <button aria-controls="expando-unique-id" aria-expanded="{!v.isExpanded}" class="slds-button slds-section__title-action" onclick="{!c.changeState}">
+                                <lightning:icon iconName="{!v.isExpanded ? 'utility:switch' : 'utility:chevronright'}" alternativeText="View Results" size="x-small" class="slds-m-right_small"/>
                                 <span class="slds-truncate" title="Section Title">{!v.surveyName}</span>
                             </button>
                         </h3>
-                        <div aria-hidden="{!!v.isParentExpanded}" class="slds-section__content slds-p-horizontal_medium">
+                        <div aria-hidden="{!!v.isExpanded}" class="slds-section__content slds-p-horizontal_medium">
                             <aura:iteration items="{!v.surveyHistory}" var="history">
                                 <c:surveyHistoryRow history="{!history}"/>
                             </aura:iteration>

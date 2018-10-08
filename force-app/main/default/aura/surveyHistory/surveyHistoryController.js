@@ -23,7 +23,7 @@
         });
         $A.enqueueAction(action);
     },
-    changeParentState : function(component, event, helper) {
-        component.set('v.isParentExpanded', !component.get('v.isParentExpanded'));
+    changeState : function(component, event, helper) {
+        component.set('v.isExpanded', !component.get('v.isExpanded'));
     }
 })

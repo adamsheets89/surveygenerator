@@ -1,19 +1,19 @@
 <aura:component>
     <aura:attribute name="history" type="Object"/>
-    <aura:attribute name="isChildExpanded" type="Boolean"/>
+    <aura:attribute name="isExpanded" type="Boolean"/>
 
     <div class="slds-p-horizontal_small">
         <div class="slds-section">
             <h3 class="slds-section__title">
-                <button aria-controls="expando-unique-id" aria-expanded="{!v.isChildExpanded}" class="slds-button slds-section__title-action" onclick="{!c.changeChildState}">
-                    <lightning:icon iconName="{!v.isChildExpanded ? 'utility:switch' : 'utility:chevronright'}" alternativeText="View Results" size="x-small" class="slds-m-right_small"/>
+                <button aria-controls="expando-unique-id" aria-expanded="{!v.isExpanded}" class="slds-button slds-section__title-action" onclick="{!c.changeChildState}">
+                    <lightning:icon iconName="{!v.isExpanded ? 'utility:switch' : 'utility:chevronright'}" alternativeText="View Results" size="x-small" class="slds-m-right_small"/>
                     <span class="slds-truncate" title="Section Title">
                         {!v.history.user} -
                         <ui:outputDate class="field" value="{!v.history.createdDate}" format="M/DD/YYYY"/>  
                     </span>
                 </button>
             </h3>
-            <div class="{!'slds-section__content slds-p-horizontal_medium' + if(v.isChildExpanded, '', ' slds-hide')}" id="expando-unique-id">
+            <div class="{!'slds-section__content slds-p-horizontal_medium' + if(v.isExpanded, '', ' slds-hide')}" id="expando-unique-id">
                 <lightning:tabset>
                     <lightning:tab label="Responses">
                         <div class="sm-container_responses slds-p-horizontal_small slds-scrollable_y">
